@@ -51,9 +51,6 @@ WORKDIR /workspace
 # Optional: Clone the pintos-kaist repository
 # RUN git clone https://github.com/casys-kaist/pintos-kaist .
 
-# Add activate script to bashrc for convenience
-RUN echo "source /pintos/activate" >> ~/.bashrc
-
 ARG UID=<호스트 UID>
 ARG GID=<호스트 GID>
 
@@ -63,6 +60,9 @@ RUN groupadd -g $GID mygroup && \
 
 # 필요한 경우, USER 명령으로 해당 사용자 지정
 USER nokdoot
+
+# Add activate script to bashrc for convenience
+RUN echo "source /workspace/activate" >> ~/.bashrc
 
 # Default command
 CMD ["/bin/bash"]
